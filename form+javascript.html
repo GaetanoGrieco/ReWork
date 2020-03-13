@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="text/javascript" language="javascript">
+  var valoreSesso = null;
+
+  function controllaCAP() {
+      if (document.form.cap.value.length!=5) {
+         alert("Il CAP deve contenere 5 cifre");
+         return false;
+      }
+      var v = parseInt(document.form.cap.value);
+      if (isNaN(v)) {
+          alert("Il CAP deve essere un numero");
+          return false;
+      }
+      return true;
+  }
+
+  function controllaName() {
+      var v = parseInt(document.form.nome.value);
+      if (!isNaN(v)) {
+         alert("Il cognome e nome non può essere un numero");
+         return false;
+      }
+      return true;
+  }
+
+  function validaInvio() {
+      if (document.form.nome.value=="") {
+        alert("Inserire cognome e nome");
+        return false;
+      }
+      if (valoreSesso==null) {
+        alert("Selezionare il sesso");
+        return false;
+      }
+      if (document.form.atneo.value=="nessuno"){
+        alert("selezionare un ateneo");
+        return false;
+      }
+      if ((document.form.lavoratore.checked)&&(document.form.descrizione.value=="")){
+        alert("Hai dichiarato di essere uno studente/lavoratore: devi compilare il campo descrizione lavoro");
+        return false;
+      }
+      alert("Dati inseriti correttamente");
+      return true;
+  }
+
+</script>
+</head>
+<body>
+  <form action="" method="POST" name="form">
+      cognome e nome:
+      <input type="text" name="nome" size="50" maxlength="50">
+      <br>
+      sesso:
+      <input type="radio" name="sesso" value="M">M
+      <input type="radio" name="sesso" value="F">F 
+      <br>  
+      ateneo:
+      <select name="ateneo"> 
+          <option value="nessuno" selected></option> 
+          <option value="sapienza">Sapienza</option>
+          <option value="torvergata">Tor Vergata</option>
+          <option value="romatre">Roma Tre</option> 
+      </select> 
+      <br>
+      CAP:
+      <input type="text" name="CAP" size="5" maxlength="5">
+      <br>
+      sono uno studente lavoratore
+      <input type="checkbox" name="lavoratore">
+      <br>
+      descrizione lavoro:
+      <input type="text" name="descrizione" size="80" maxlength="80">
+      <br>
+      <br>
+      <input type="submit" value="Invia">
+      <input type="reset" value="Reset">   
+</form>
+</body>
+</html>
